@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Interstellar
+  notes: MyText
+
+two:
+  title: INVALID_MOVIE_NAME_123
+  notes: MyText

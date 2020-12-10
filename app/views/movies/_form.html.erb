@@ -1,0 +1,33 @@
+<%= form_with(model: movie, local: true) do |form| %>
+<% if movie.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+    <ul>
+        <% movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="max-w-lg">
+    <div class="space-y-4">
+        <div class="flex items-start">
+            <%= form.label :title, :class => "text-gray-300 w-44 inline-block" %>
+            <%= form.text_field :title, :class => "flex-grow px-3 py-1 rounded-md text-gray-200 bg-gray-700" %>
+        </div>
+
+        <div class="flex items-start">
+            <%= form.label :notes, "Personal notes", :class => "text-gray-200 w-44 inline-block" %>
+            <%= form.text_area :notes, :rows => "5", :class => "flex-grow px-3 py-1 rounded-md text-gray-200 bg-gray-700" %>
+        </div>
+
+        <div class="flex items-start">
+            <div class="w-44"></div>
+            <%= form.submit submit_text, :class => "px-3 py-1 rounded-md text-gray-200 bg-blue-600 cursor-pointer hover:bg-blue-700 transition duration-100" %>
+            <%= link_to 'Back to overview', movies_path, :class => "ml-4 px-3 py-1 rounded-md text-gray-200 underline hover:bg-gray-600 transition duration-100" %>
+        </div>
+    </div>
+</div>
+<% end %>

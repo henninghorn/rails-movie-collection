@@ -1,0 +1,27 @@
+<div class="p-16 mx-auto max-w-screen-xl">
+    <div class="flex items-center mb-8">
+        <h1 class="text-6xl font-bold text-gray-100">
+            Movies
+        </h1>
+        <%= link_to 'Add new', new_movie_path, :class => "ml-6 rounded-md text-md shadow-md bg-blue-600 px-3 py-1 block text-gray-100 font-semibold hover:bg-blue-500 transition duration-200" %>
+    </div>
+
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+        <% @movies.each do |movie| %>
+            <div class="flex bg-gray-700 rounded-md shadow-md">
+                <div class="w-20 h-32 bg-cover bg-center rounded-l-md flex-shrink-0" style="background-image: url(<%= movie.omdb('poster') %>)"></div>
+                <div class="px-4 pt-2 relative flex-grow">
+                    <h2 class="text-gray-100 text-xl font-semibold">
+                        <%= link_to movie.title, movie %>
+                    </h2>
+
+                    <div class="absolute bottom-0 flex pb-1 -ml-3">
+                        <%= link_to 'Show', movie, :class => "text-xs px-3 py-1 text-gray-400 underline hover:opacity-75 transition duration-200" %>
+                        <%= link_to 'Edit', edit_movie_path(movie), :class => "text-xs px-3 py-1 text-gray-400 underline hover:opacity-75 transition duration-200" %>
+                        <%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' }, :class => "text-xs px-3 py-1 text-red-300 underline hover:opacity-75 transition duration-200" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+        <%= "#{@title} - " if @title %>
+        Coding Challenge - Henning Horn
+    </title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-gray-800">
+    <% if notice %>
+        <div class="notice shadow-md rounded-md p-4 bg-gray-300 mb-8 absolute top-0 right-0 m-8 text-sm opacity-0 scale-90 transition transform duration-300">
+            <%= notice %>
+        </div>
+    <% end %>
+
+    <%= yield %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let notice = document.querySelector('.notice')
+
+            if (notice) {
+                setTimeout(() => {
+                    notice.classList.remove('opacity-0', 'scale-90')
+                    notice.classList.add('opacity-100', 'scale-100')
+                }, 200);
+                setTimeout(() => {
+                    notice.classList.remove('opacity-100', 'scale-100')
+                    notice.classList.add('opacity-0', 'scale-90')
+                }, 4000);
+            }
+        })
+    </script>
+  </body>
+</html>

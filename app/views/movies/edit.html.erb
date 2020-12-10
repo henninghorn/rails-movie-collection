@@ -1,0 +1,11 @@
+<div class="p-16 mx-auto max-w-screen-xl">
+    <h1 class="text-white text-3xl font-semibold mb-6 flex items-center">
+        Editing Movie
+
+        <span class="text-xs ml-3 rounded-full px-3 py-1 bg-gray-500 hover:bg-green-600 transition duration-200">
+            <%= link_to 'Show', @movie %>
+        </span>
+    </h1>
+
+    <%= render 'form', movie: @movie, submit_text: "Update movie" %>
+</div>
